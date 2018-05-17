@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 """The setup script."""
 
 from setuptools import setup, find_packages
@@ -11,11 +10,20 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+requirements = [
+    'beautifulsoup4',
+    'colorama',
+    'coloredlogger',
+    'urllib3',
+]
 
-setup_requirements = ['pytest-runner', ]
+setup_requirements = [
+    'pytest-runner',
+]
 
-test_requirements = ['pytest', ]
+test_requirements = [
+    'pytest',
+]
 
 setup(
     author="David Leeuwestein",
@@ -28,7 +36,8 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
-    description="a python-driven url fuzzer and web-spiderer with the aim to give you a as detailed as possible insight of the websites' structure",
+    description=
+    "a python-driven url fuzzer and web-spiderer with the aim to give you a as detailed as possible insight of the websites' structure",
     install_requires=requirements,
     license="GNU General Public License v3",
     long_description=readme + '\n\n' + history,
@@ -41,5 +50,8 @@ setup(
     tests_require=test_requirements,
     url='https://github.com/cybertschunk/fuzzix',
     version='0.0.1',
+    scripts=[
+        'bin/fuzzixscan',
+    ],
     zip_safe=False,
 )

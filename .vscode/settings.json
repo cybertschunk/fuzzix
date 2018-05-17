@@ -1,8 +1,15 @@
 {
     "python.unitTest.unittestEnabled": false,
-    "python.pythonPath": "/usr/bin/python3",
     "python.unitTest.promptToConfigure": false,
     "python.unitTest.pyTestEnabled": false,
     "python.unitTest.nosetestsEnabled": false,
-    
+    "python.linting.pylintPath": "env/bin/pylint",
+    "python.linting.pylintUseMinimalCheckers": false,
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfPath": "env/bin/yapf",
+    "editor.formatOnSave": true,
+    "python.linting.pylintArgs": [
+        "-d no-else-return"
+    ],
+    "python.pythonPath": "env/bin/python",
 }

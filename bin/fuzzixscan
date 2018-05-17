@@ -1,0 +1,5 @@
+#!/usr/bin/python3
+"""launches the app"""
+import sys
+from fuzzix.fuzzix import main
+main(sys.argv)
