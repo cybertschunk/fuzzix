@@ -16,7 +16,7 @@ fuzzix
 
 
 
-a python-driven url fuzzer and web-spiderer with the aim to give you a as detailed as possible insight of the websites' structure
+ A python-based URL fuzzer and web spiderer designed to give you the most accurate insight into the structure of the site 
 
 
 * Free software: GNU General Public License v3
