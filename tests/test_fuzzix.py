@@ -4,7 +4,9 @@
 
 import pytest
 import unittest
-import fuzzix.api
+from fuzzix import fuzzix
+from fuzzix import api
+from fuzzix.api import core
 
 
 class ApiTest(unittest.TestCase):
@@ -16,16 +18,10 @@ class ApiTest(unittest.TestCase):
         return: None
         """
         try:
-            fuzzix.api.core.LOGGER.wtf('wtf')
-            fuzzix.api.core.LOGGER.success('success')
-            fuzzix.api.core.LOGGER.error('error')
-            fuzzix.api.core.LOGGER.info('info')
-            fuzzix.api.core.LOGGER.verbose('verbose')
+            api.core.LOGGER.wtf('wtf')
+            api.core.LOGGER.success('success')
+            api.core.LOGGER.error('error')
+            api.core.LOGGER.info('info')
+            api.core.LOGGER.verbose('verbose')
         except BaseException as _e:
             self.fail('fuzzix.api.core.LOGGER not correctly working')
-
-
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
