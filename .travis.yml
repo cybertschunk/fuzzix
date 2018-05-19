@@ -7,7 +7,7 @@ install:
 script: 
   - tox
   - pip install .
-  - coverage run fuzzixscan
+  - coverage run bin/fuzzixscan
 after_success:
   - codecov
 deploy:

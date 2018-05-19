@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Main module."""
 import sys
-from . import print_banner
+
+from . import *
 
 
 def main(args):
