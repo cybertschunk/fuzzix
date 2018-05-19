@@ -9,6 +9,9 @@ fuzzix
 .. image:: https://img.shields.io/travis/cybertschunk/fuzzix.svg
         :target: https://travis-ci.org/cybertschunk/fuzzix
 
+.. image:: https://ci.appveyor.com/api/projects/status/8a5g50s3rclhm149/branch/master
+        :target: https://ci.appveyor.com/project/cybertschunk/fuzzix
+        
 .. image:: https://readthedocs.org/projects/fuzzix/badge/?version=latest
         :target: https://fuzzix.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
