@@ -4,8 +4,7 @@
 
 import unittest
 from fuzzix import api
-from fuzzix.api.core.settings import Settings
-from fuzzix.api.core.logger import LOGGER
+from fuzzix.api import core
 
 
 class CoreTest(unittest.TestCase):
@@ -17,11 +16,11 @@ class CoreTest(unittest.TestCase):
         return: None
         """
         try:
-            api.core.logger.LOGGER.wtf('wtf')
-            api.core.logger.LOGGER.success('success')
-            api.core.logger.LOGGER.error('error')
-            api.core.logger.LOGGER.info('info')
-            api.core.logger.LOGGER.verbose('verbose')
+            api.core.LOGGER.wtf('wtf')
+            api.core.LOGGER.success('success')
+            api.core.LOGGER.error('error')
+            api.core.LOGGER.info('info')
+            api.core.LOGGER.verbose('verbose')
         except BaseException as error:
             self.fail('fuzzix.api.core.LOGGER not correctly working ' +
                       str(error))
@@ -34,7 +33,7 @@ class CoreTest(unittest.TestCase):
         try:
             #basic testing
             default_path = 'config/config.ini'
-            settings = Settings()
+            settings = api.core.Settings()
             settings.read_config(default_path)
             self.assertEqual(
                 settings.read_attribute('abc', 'abc'),
@@ -72,7 +71,7 @@ class CoreTest(unittest.TestCase):
             settings.write_config('config/config2.ini')
 
             # test equality
-            settings2 = api.core.settings.Settings()
+            settings2 = api.core.Settings()
             self.assertNotEqual(
                 settings,
                 settings2,
