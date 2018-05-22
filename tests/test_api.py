@@ -1,10 +1,9 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """Tests for `fuzzix` package."""
 
 import unittest
 from fuzzix import api
-from fuzzix.api import core
+from fuzzix.api.core.settings import Settings
 
 
 class CoreTest(unittest.TestCase):
@@ -33,7 +32,7 @@ class CoreTest(unittest.TestCase):
         try:
             #basic testing
             default_path = 'config/config.ini'
-            settings = api.core.Settings()
+            settings = api.core.settings.Settings()
             settings.read_config(default_path)
             self.assertEqual(
                 settings.read_attribute('abc', 'abc'),
@@ -71,7 +70,7 @@ class CoreTest(unittest.TestCase):
             settings.write_config('config/config2.ini')
 
             # test equality
-            settings2 = api.core.Settings()
+            settings2 = api.core.settings.Settings()
             self.assertNotEqual(
                 settings,
                 settings2,
