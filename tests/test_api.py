@@ -34,7 +34,7 @@ class CoreTest(unittest.TestCase):
         try:
             #basic testing
             default_path = 'config/config.ini'
-            settings = api.core.settings.Settings()
+            settings = Settings()
             settings.read_config(default_path)
             self.assertEqual(
                 settings.read_attribute('abc', 'abc'),
@@ -42,6 +42,22 @@ class CoreTest(unittest.TestCase):
                 msg=
                 'fuzzix.api.core.Config is not correctly handling not known keys'
             )
+
+            with self.assertRaises(
+                    ValueError,
+                    msg='malformed keys are not correctly handled'):
+                settings.write_attribute('TEST', 'TEST')
+
+            with self.assertRaises(
+                    ValueError,
+                    msg='malformed keys are not correctly handled'):
+                settings.__config__['TEST'] = 'TEST'
+                settings.write_config('config/config2.ini')
+
+            #restore old config
+            settings = Settings()
+            settings.read_config(default_path)
+
             self.assertEqual(
                 settings.read_attribute('WORDLISTS/directories', ''),
                 'worlists/directories.txt',
@@ -72,7 +88,7 @@ class CoreTest(unittest.TestCase):
             settings.write_config('config/config2.ini')
 
             # test equality
-            settings2 = api.core.settings.Settings()
+            settings2 = Settings()
             self.assertNotEqual(
                 settings,
                 settings2,
