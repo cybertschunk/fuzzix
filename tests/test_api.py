@@ -116,7 +116,7 @@ class CoreTest(unittest.TestCase):
             self.fail('fuzzix.api.core.Config not correctly working ' +
                       str(error))
 
-    def test_core_structure(self):
+    def test_core_resources_structure(self):
         """
         tests the class fuzzix.api.core.resources._Structure
         return: None
