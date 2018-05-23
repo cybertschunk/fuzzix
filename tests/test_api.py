@@ -4,6 +4,8 @@
 import unittest
 from fuzzix import api
 from fuzzix.api.core.settings import Settings
+from fuzzix.api.core.resources import _Structure
+from fuzzix.api.core.resources.content import Content
 
 
 class CoreTest(unittest.TestCase):
@@ -97,3 +99,16 @@ class CoreTest(unittest.TestCase):
         except BaseException as error:
             self.fail('fuzzix.api.core.Config not correctly working ' +
                       str(error))
+
+    def test_core_structure(self):
+        """
+        tests the class fuzzix.api.core.resources._Structure
+        return: None
+        """
+        structure = _Structure("test")
+        try:
+            structure.to_node()
+            structure.from_node(None)
+            self.fail('_Structure isn\'t an abstract basis class')
+        except NotImplementedError as _e:
+            pass

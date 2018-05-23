@@ -95,3 +95,10 @@ class Content(_Structure):
         return: None
         """
         self.processor = processor
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return self.content == other.content and self.content_type == other.content_type \
+            and self.status == other.status and self.processor == other.processor
+        else:
+            return False
