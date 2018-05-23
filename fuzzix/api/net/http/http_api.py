@@ -9,7 +9,7 @@ from fuzzix.api.core.resources.content import Content
 urllib3.disable_warnings()
 
 
-class HTTPApi:
+class _HTTPApi:
     """
     serves different functions for webcrawling
     """
@@ -64,3 +64,6 @@ class HTTPApi:
                 results.append(link)
 
         return results
+
+
+HTTP_API = _HTTPApi()
