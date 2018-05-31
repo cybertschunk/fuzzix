@@ -35,6 +35,7 @@ class CoreTest(unittest.TestCase):
             #basic testing
             default_path = 'config/config.ini'
             settings = Settings()
+            settings2 = Settings()
             settings.read_config(default_path)
             self.assertEqual(
                 settings.read_attribute('abc', 'abc'),
@@ -43,21 +44,7 @@ class CoreTest(unittest.TestCase):
                 'fuzzix.api.core.Config is not correctly handling not known keys'
             )
 
-            with self.assertRaises(
-                    ValueError,
-                    msg='malformed keys are not correctly handled'):
-                settings.write_attribute('TEST', 'TEST')
-
-            with self.assertRaises(
-                    ValueError,
-                    msg='malformed keys are not correctly handled'):
-                settings.__config__['TEST'] = 'TEST'
-                settings.write_config('config/config2.ini')
-
-            #restore old config
-            settings = Settings()
-            settings.read_config(default_path)
-
+            # test reading
             self.assertEqual(
                 settings.read_attribute('WORDLISTS/directories', ''),
                 'worlists/directories.txt',
@@ -65,6 +52,7 @@ class CoreTest(unittest.TestCase):
                 'api.core.Settings is not returning the right attribute for the given key'
             )
 
+            # test reading from file
             with self.assertRaises(
                     ValueError,
                     msg=
@@ -80,37 +68,85 @@ class CoreTest(unittest.TestCase):
             ):
                 settings.write_config(default_path, overwrite_config=False)
 
+            settings.write_attribute('tests/test', 'abc')
+            self.assertNotEqual(
+                settings,
+                settings2,
+                msg='key not correctly stored by settings attribute')
+
+            self.assertEqual(
+                'abc',
+                settings.read_attribute('tests/test', ''),
+                msg='key not correctly stored by settings attribute')
+
+            with self.assertRaises(
+                    ValueError,
+                    msg='malformed keys are not correctly handled'):
+                settings.write_attribute('TEST', 'TEST')
+
+            # test writing to file
             with self.assertRaises(
                     ValueError,
                     msg='api.core.Settings is writing in not existing dirs'):
                 settings.write_config('NOT_EXIST_DIR/config.ini')
 
+            with self.assertRaises(
+                    ValueError,
+                    msg='malformed keys are not correctly handled'):
+                settings.__config__['TEST'] = 'TEST'
+                settings.write_config('config/config2.ini')
+
+            settings = Settings()
+            settings.read_config('config/config.ini')
             settings.write_config('config/config2.ini')
 
             # test equality
-            settings2 = Settings()
+            tmp_str = "abc"
+            self.assertNotEqual(
+                settings,
+                tmp_str,
+                msg=
+                'settings attribute is apparently equal to a string instance')
+
             self.assertNotEqual(
                 settings,
                 settings2,
                 msg='not equal settings classes are apparently equal')
+
             settings2.read_config('config/config2.ini')
             self.assertEqual(
                 settings,
                 settings2,
                 msg=
-                'equal settings classes are apparently not equal or importing/exporting config to file is not correctly handled'
+                'equal settings classes are apparently not equal or importing/'\
+                'exporting config to file is not correctly handled'
             )
 
-            #test integrity
+            # test integrity
             self.assertEqual(
                 settings.read_attribute('WORDLISTS/directories', ''),
                 'worlists/directories.txt',
                 msg='settings not correctly reading out settings attributes')
+
             self.assertEqual(
                 settings2.read_attribute(
                     'WORDLISTS/directories',
                     'settings2 not correctly reading out settings attributes'),
                 'worlists/directories.txt')
+
+            # test delitem
+            settings.write_attribute('tests/test', 'abc')
+            with self.assertRaises(
+                    ValueError,
+                    msg='settings class is deleting not existing keys'):
+                settings.del_attribute('tests/NOT_EXISTING')
+
+            settings.del_attribute('tests/test')
+            self.assertEqual(
+                settings, settings2, msg='keys are not correctly deleted')
+
+            # test printing
+            print(settings)
 
         except BaseException as error:
             self.fail('fuzzix.api.core.Config not correctly working ' +

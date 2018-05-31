@@ -91,13 +91,25 @@ class Settings:
                        default + " instead")
             return default
 
+    def del_attribute(self, key):
+        """
+        deletes an existing key, throws an exception if there is no such key
+        attribute key: the key to delete
+        return: None
+        """
+        if key in self.__config__:
+            del self.__config__[key]
+        else:
+            raise ValueError('there is no such key in the config ' + key)
+
     def __str__(self):
         """
+        returns the actual config as str
         return: The actual config as str
         """
         result = ''
         for key in self.__config__:
-            result = result + key + " : " + self.__config__[key]
+            result = result + key + " : " + self.__config__[key] + "\n"
         return result
 
     def __eq__(self, other):
