@@ -6,6 +6,7 @@ from fuzzix import api
 from fuzzix.api.core.settings import Settings
 from fuzzix.api.core.resources import _Structure
 from fuzzix.api.core.resources.content import Content
+from fuzzix.api.net.resource.url import URL
 
 
 class CoreTest(unittest.TestCase):
@@ -157,10 +158,27 @@ class CoreTest(unittest.TestCase):
         tests the class fuzzix.api.core.resources._Structure
         return: None
         """
-        structure = _Structure("test")
+        structure = _Structure()
         try:
             structure.to_node()
+            self.fail('_Structure isn\'t an abstract basis class')
+        except NotImplementedError as _e:
+            pass
+        try:
             structure.from_node(None)
             self.fail('_Structure isn\'t an abstract basis class')
         except NotImplementedError as _e:
             pass
+
+    def test_core_resources_content(self):
+        """
+        tests the class fuzzix.api.core.resources.Content
+        return: None
+        """
+        try:
+            test_url = URL('http://example.com/test')
+            test_content = Content(test_url)
+        except BaseException as error:
+            self.fail(
+                'fuzzix.api.core.resources.Content not correctly working ' +
+                str(error))
