@@ -176,7 +176,9 @@ class CoreTest(unittest.TestCase):
         return: None
         """
         try:
-            test_url = URL('http://example.com/test')
+            test_url = URL(
+                'https://raw.githubusercontent.com/cybertschunk/fuzzix/master/tests/web/index.html'
+            )
             test_content = Content(test_url)
         except BaseException as error:
             self.fail(

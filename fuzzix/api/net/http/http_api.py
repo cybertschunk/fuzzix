@@ -21,7 +21,7 @@ class _HTTPApi:
         """
         receives a given url
         attr url: the url to receive as URL
-        return: the received content as Content
+        return: the received content as Content together with the received content_type
         """
         if not isinstance(url, URL):
             raise ValueError('unsopported type for attribute url')
@@ -29,7 +29,7 @@ class _HTTPApi:
         response = self.__pool_manager__.request('GET', url.getURL())
         content = Content(url)
         content.set_status(response.status)
-        content.set_content(response.getheaders()['Content-Type'])
+        content.set_content_type(response.getheaders()['Content-Type'])
 
         #check filetype
         if 'text' in response.getheaders()['Content-Type']:
@@ -67,3 +67,20 @@ class _HTTPApi:
 
 
 HTTP_API = _HTTPApi()
+
+
+def simple_http_processor(content):
+    """
+    processes a given Content object. Reads the remote content on the given URL
+    and stores it in the Content attribute
+    attribute content: the content to proceed
+    return: the proceeded content
+    """
+    if not isinstance(content, Content):
+        raise ValueError(
+            'expected type fuzzix.api.core.resources.Content for attribute Content'
+        )
+
+    target_url = content.getURL()
+    proceeded_content = HTTP_API.receive_url(target_url)
+    return proceeded_content
