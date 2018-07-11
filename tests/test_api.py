@@ -7,6 +7,7 @@ from fuzzix.api.core.settings import Settings
 from fuzzix.api.core.resources import _Structure
 from fuzzix.api.core.resources.content import Content
 from fuzzix.api.net.resource.url import URL
+from fuzzix.api.net.dns.dns_api import DNS_API, extract_query_results
 
 
 class CoreTest(unittest.TestCase):
@@ -184,3 +185,12 @@ class CoreTest(unittest.TestCase):
             self.fail(
                 'fuzzix.api.core.resources.Content not correctly working ' +
                 str(error))
+
+
+class NetTest(unittest.TestCase):
+    """tests fuzzix.api.net"""
+
+    def test_net_dns_dns_api(self):
+        """
+        tests the fuzzix.api.net.dns.dns_api
+        """

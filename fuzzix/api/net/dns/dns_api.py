@@ -27,7 +27,7 @@ class _DNSApi:
         querys the dns server
         attr querysubject: the subject of the query
         attr query: the query type
-        return the result of the querys
+        return: the result of the querys
         """
         if not isinstance(querysubject, str) or not isinstance(query, str):
             raise ValueError('given arguments have unsupported types')
@@ -58,4 +58,20 @@ class _DNSApi:
         return self.raw_lookup(querysubject, 'MX')
 
 
+def extract_query_results(raw_result):
+    """
+    extracts the results out of a raw dnspython result and returns them as a python list
+    attr raw_result: the raw resultset
+    return: the results as python list
+    """
+    result = []
+    for rdata in raw_result:
+        result.append(rdata)
+    return result
+
+
 DNS_API = _DNSApi()
+
+
+def simple_dns_processor(content):
+    raise NotImplementedError('not yed implemented')
