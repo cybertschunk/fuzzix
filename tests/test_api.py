@@ -194,3 +194,4 @@ class NetTest(unittest.TestCase):
         """
         tests the fuzzix.api.net.dns.dns_api
         """
+        pass
