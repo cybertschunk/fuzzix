@@ -9,7 +9,7 @@ fuzzix
 .. image:: https://img.shields.io/travis/cybertschunk/fuzzix.svg
         :target: https://travis-ci.org/cybertschunk/fuzzix
 
-.. image:: https://ci.appveyor.com/api/projects/status/8a5g50s3rclhm149/branch/master
+.. image:: https://ci.appveyor.com/api/projects/status/8a5g50s3rclhm149/branch/master?svg=true
         :target: https://ci.appveyor.com/project/cybertschunk/fuzzix
         
 .. image:: https://readthedocs.org/projects/fuzzix/badge/?version=latest
