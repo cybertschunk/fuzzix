@@ -19,6 +19,8 @@ fuzzix
 .. image:: https://api.codacy.com/project/badge/Grade/71d37f9d2f6f4aaaaeab3fcab5ac2b32    
         :target: https://www.codacy.com/project/cybertschunk/fuzzix/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cybertschunk/fuzzix&amp;utm_campaign=Badge_Grade_Dashboard
 
+.. image:: https://api.codacy.com/project/badge/Coverage/71d37f9d2f6f4aaaaeab3fcab5ac2b32   
+        :target: https://www.codacy.com/project/cybertschunk/fuzzix/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cybertschunk/fuzzix&amp;utm_campaign=Badge_Grade_Dashboard
 
 
 
