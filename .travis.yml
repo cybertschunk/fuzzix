@@ -3,11 +3,10 @@ python:
 - 3.6
 - 3.5
 install:
-- pip install -U tox-travis codecov
+- pip install -U tox-travis codacy-coverage
 script:
 - tox
 - pip install .
-- pytest
 - coverage run --source=fuzzix/ -m unittest discover -s tests/
 - coverage xml
 after_success:
