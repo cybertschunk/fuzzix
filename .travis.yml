@@ -2,14 +2,16 @@ language: python
 python:
 - 3.6
 - 3.5
-install: 
-  - pip install -U tox-travis codecov
-script: 
-  - tox
-  - pip install .
-  - coverage run --source=fuzzix/ -m unittest discover -s tests/ 
+install:
+- pip install -U tox-travis codecov
+script:
+- tox
+- pip install .
+- pytest
+- coverage run --source=fuzzix/ -m unittest discover -s tests/
+- coverage xml
 after_success:
-  - codecov
+- python-codacy-coverage -r coverage.xml
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
@@ -20,3 +22,6 @@ deploy:
     tags: true
     repo: cybertschunk/fuzzix
     python: 3.6
+env:
+  global:
+    secure: FX4rATHXEemnah41CdOtqC6koI89U7v8Y1MaQiGpQXcvm/RSS0AOS8HbL+YUSt8BPF0FhNaoXeAeLlVYv/V6ocgI9XMTqujLNwQa7mAlZhOYQuxGeMnclCkaGLwajXcfV5udgyYTgHAJtkUKAZC4olsQrG8S6U9m4Cgm4LknXXYzMBaUkG9mGS2tT0nSFXYBQjGgROcc36/pNk5rld3WiKVeugArD9F7HwufivlGrxUwFT7eKsNGe5UMeD/wpndbK4HR2u4nr8yGH+t0X+TBD2mibaRKtC6vYf7+jkWLFfH1jCwSC8nNDJmRWIrev+Wve3PnfrUPx4gtM+GOyypvs4vDfzlfD9yVAD0lw/L2EB6ndakrcb08PYgmMSr1OUfWguwE3PDVlff1Pz67X5QZav6Y06y6pqMCryZDa71TQ8Cd4nOWL/AKdPE6nOZBNEMEIaOq59zu1z+hlH5aC3D8b+cjQ9MOsGyBZOzDRpkSn1emWeDOy1dvefZS3rsIUELNftOFlBG5zCyV1HJk8kWNEUz6wRWflYlYeMeZ4mtRivV0Xi+fL7cGM6w20S4BI1Ic3hbkepDJLsFoinfDimdwi0U2a9I2bB0l7aeGwy9LE1NTdhR12tSyRogl9U5623x6JzWtldFjWeEARbBxbkfBgfFgBvZli5lxUxf90LI0NIM=
