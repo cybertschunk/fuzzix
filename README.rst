@@ -16,8 +16,8 @@ fuzzix
         :target: https://fuzzix.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://codecov.io/gh/cybertschunk/fuzzix/branch/master/graph/badge.svg
-        :target: https://codecov.io/gh/cybertschunk/fuzzix
+.. image:: https://api.codacy.com/project/badge/Grade/71d37f9d2f6f4aaaaeab3fcab5ac2b32    
+        :target: https://www.codacy.com/project/cybertschunk/fuzzix/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cybertschunk/fuzzix&amp;utm_campaign=Badge_Grade_Dashboard
 
 
 
