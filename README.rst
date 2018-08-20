@@ -30,13 +30,27 @@ A python-based URL fuzzer and web spider engine designed to give you the most ac
 * Documentation: https://fuzzix.readthedocs.io.
 
 
-Features
+Features (planned)
 --------
 
-* TODO
+* universal api 
+* easily expandable with plugins
+* easily configurable with profiles
+* supports export of reports in plain text, pdf and html
+
+TO-DO
+-------
+
+* finish api module
+* finish core module
+* finish report module
+* write plugins 
+* test-coverage > 90%
 
 Credits
 -------
+cybertschunk @cybertschunk
+
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
