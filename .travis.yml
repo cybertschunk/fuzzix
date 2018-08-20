@@ -10,7 +10,7 @@ script:
 - coverage run --source=fuzzix/ -m unittest discover -s tests/
 - coverage xml
 after_success:
-- python-codacy-coverage -r coverage.xml
+- python-codacy-coverage -r coverage.xml -d $TRAVIS_BUILD_DIR -c $TRAVIS_COMMIT
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
