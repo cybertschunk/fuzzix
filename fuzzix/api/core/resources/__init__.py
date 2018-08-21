@@ -7,8 +7,8 @@ providing high-level core functionalities for fuzzix
 class _Structure:
     """abstract base class for all structures"""
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self):
+        pass
 
     @staticmethod
     def from_node(node):
