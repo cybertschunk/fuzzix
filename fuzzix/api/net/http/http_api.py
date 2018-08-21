@@ -39,31 +39,28 @@ class _HTTPApi:
             content.set_content(response.data)
         return content
 
-    def grab_refs(self, content):
-        """
-        extracts most hyperlinks out of a given html document
-        attribute content: a str encoded html document
-        return: returns the extracted links as a list
-        """
-        results = []
-        page = BeautifulSoup(content, 'html.parser')
 
-        # divide in tags
-        tags = page.find_all()
-
-        # scanning src attribute
-        for tag in tags:
-            link = tag.get('src')
-            if link is not None:
-                results.append(link)
-
-        # scanning href attribute
-        for tag in tags:
-            link = tag.get('href')
-            if link is not None:
-                results.append(link)
-
-        return results
+def grab_refs(content):
+    """
+    extracts most hyperlinks out of a given html document
+    attribute content: a str encoded html document
+    return: returns the extracted links as a list
+    """
+    results = []
+    page = BeautifulSoup(content, 'html.parser')
+    # divide in tags
+    tags = page.find_all()
+    # scanning src attribute
+    for tag in tags:
+        link = tag.get('src')
+        if link is not None:
+            results.append(link)
+    # scanning href attribute
+    for tag in tags:
+        link = tag.get('href')
+        if link is not None:
+            results.append(link)
+    return results
 
 
 HTTP_API = _HTTPApi()
