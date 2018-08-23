@@ -3,6 +3,20 @@ from fuzzix.api.core.resources import _Structure
 from fuzzix.api.net.resource.url import URL
 
 
+class SearchEngine:
+    """abstract base class for all implemented search engines"""
+
+    def __init__(self, name):
+        self.name = name
+
+    def search(self, searchstr, use_api_key_if_provided=True):
+        """
+        searches for a given str in the search engine.
+        return: the results as a list of SearchResult-Objects
+        """
+        raise NotImplementedError('abstract basis class')
+
+
 class SearchResult(_Structure):
     """stores all important attributes of a search result"""
 
@@ -10,6 +24,7 @@ class SearchResult(_Structure):
         self.url = url
         self.title = title
         self.description = description
+        super(SearchResult, self).__init__()
 
     @property
     def url(self):
@@ -65,3 +80,16 @@ class SearchResult(_Structure):
         return: None
         """
         self.description = description
+
+    @staticmethod
+    def from_node(node):
+        """
+        initializes a SearchResult-Instance from a NodeJS-Object
+        return: The initialized SearchResult-Object
+        """
+
+    def to_node(self):
+        """
+        stores the attributes of the object in a NodeJS-Object
+        return: the crafted NodeJS-Object
+        """
