@@ -11,5 +11,6 @@
     "python.linting.pylintArgs": [
         "-d no-else-return"
     ],
-    "python.pythonPath": "env/bin/python"
+    "python.pythonPath": "env/bin/python",
+    "git.ignoreLegacyWarning": true
 }

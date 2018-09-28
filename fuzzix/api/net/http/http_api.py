@@ -50,7 +50,7 @@ def grab_refs(content):
     page = BeautifulSoup(content, 'html.parser')
     # divide in tags
     tags = page.find_all()
-    # scanning src attribute
+    # scanning src attributed
     for tag in tags:
         link = tag.get('src')
         if link is not None:
